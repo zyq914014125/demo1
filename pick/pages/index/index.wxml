@@ -1,0 +1,18 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+    请点击头像签到：
+        <button plain='true' open-type="getUserInfo" bindgetuserinfo="modalinput1"><image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+     </button>
+    </block>
+  </view>
+  <view class="usermotto">
+  <modal hidden="{{hiddenmodalput1}}" title="签到" confirm-text="确定" cancel-text="取消" bindcancel="cancel1" bindconfirm="confirm1">
+    <input class='inputinfo'  type='text' placeholder="姓名：" bindinput='setname' value='{{name}}' />
+    <input class='inputinfo'  type='text' placeholder="工号：" bindinput='setuserid' value='{{userid}}' />
+  </modal>
+  </view>
+</view>
